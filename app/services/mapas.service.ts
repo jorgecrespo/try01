@@ -75,10 +75,11 @@ actualizarMarcador(marcador:Marcador,key$:string){
 
 
 
-    borrarMarcador(idx:number){
-      this.marcadores.splice(idx,1);
-      this.guardarMarcadores();
+    borrarMarcador(k:string){
 
+      let url = `${ this.marcadorUrl }${k}.json`;
+      return this.http.delete(url)
+              .map(data => data.json())
 
 
     }

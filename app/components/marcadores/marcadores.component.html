@@ -33,8 +33,28 @@
       <td>{{ marcadores[k].direccion }}</td>
       <td>{{ marcadores[k].lat }}</td>
       <td>{{ marcadores[k].lng }}</td>
-      <td> <button type="button" [routerLink]="['/marcador', k ]" class="btn btn-outline-primary">Editar</button> </td>
+      <td> <button type="button"
+                   [routerLink]="['/marcador', k ]"
+                   class="btn btn-outline-primary">
+                    Editar
+            </button>
+        <button type="button"
+                (click)="borrarMarcador(k)"
+                class="btn btn-outline-danger">
+                Borrar
+        </button>
+      </td>
     </tr>
 
   </tbody>
 </table>
+
+<div class="alert alert-danger"
+     *ngIf="(marcadores | keys)==0 && !cargando">
+  <strong>NO HAY REGISTROS!!!</strong>
+</div>
+
+<div class="alert alert-warning"
+     *ngIf="cargando">
+  <strong>Cargando...</strong>
+</div>

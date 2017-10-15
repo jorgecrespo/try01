@@ -10,6 +10,7 @@ import { Marcador } from "../../interfaces/marcador.interface";
 export class MarcadoresComponent  {
 
   marcadores: any[]=[];
+  cargando: boolean = true;
 
   constructor( private ms:MapasService) {
 
@@ -17,7 +18,24 @@ export class MarcadoresComponent  {
               .subscribe( data =>{
                 console.log(data);
                 this.marcadores = data;
+                this.cargando = false;
               })
+
+   }
+
+   borrarMarcador(k:string){
+
+      this.ms.borrarMarcador(k)
+              .subscribe(data => {
+                if ( data ){
+                  console.error(data);
+                } else {
+                  //se elimino correctamente
+                  delete this.marcadores[k];
+                }
+              })
+
+
 
    }
 

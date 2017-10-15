@@ -18,6 +18,7 @@ import { MarcadorComponent } from './components/marcador/marcador.component';
 //Rutas
 import { APP_ROUTING } from "./app.routes";
 import { KeysPipe } from './pipes/keys.pipe';
+import { RubrosComponent } from './components/rubros/rubros.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { KeysPipe } from './pipes/keys.pipe';
     MapaComponent,
     MarcadoresComponent,
     MarcadorComponent,
-    KeysPipe
+    KeysPipe,
+    RubrosComponent
   ],
   imports: [
     BrowserModule,
