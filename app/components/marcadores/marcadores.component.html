@@ -33,7 +33,7 @@
       <td>{{ marcadores[k].direccion }}</td>
       <td>{{ marcadores[k].lat }}</td>
       <td>{{ marcadores[k].lng }}</td>
-      <td> <button type="button" class="btn btn-outline-primary">Editar</button> </td>
+      <td> <button type="button" [routerLink]="['/marcador', k ]" class="btn btn-outline-primary">Editar</button> </td>
     </tr>
 
   </tbody>
