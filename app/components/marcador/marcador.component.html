@@ -1,0 +1,88 @@
+<h3>Marcador</h3>
+
+<button routerLink="/marcadores" type="button" class="btn btn-outline-danger">Volver</button>
+
+<div class="row">
+  <div class="col-md-12">
+    <form (ngSubmit)="guardarMarcador()" #forma="ngForm">
+
+      <div class="form-group">
+        <label>Id</label>
+        <input  type="text"
+                name="id"
+                class="form-control"
+                placeholder="Id"
+                [(ngModel)]="temp.id"
+                value="0"
+                required>
+
+      </div>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input  type="text"
+                name="nombre"
+                class="form-control"
+                placeholder="Nombre"
+                [(ngModel)]="temp.nombre"
+                required>
+
+      </div>
+
+      <div class="form-group">
+        <label>Direccion</label>
+        <input  type="text"
+                name="direccion"
+                class="form-control"
+                placeholder="Nombre"
+                [(ngModel)]="temp.direccion"
+                required>
+
+      </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Latitud</label>
+      <input  type="number"
+              name="lat"
+              class="form-control"
+              [(ngModel)]="temp.lat"
+              required>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Longitud</label>
+      <input  type="number"
+              name="lng"
+              class="form-control"
+              [(ngModel)]="temp.lng"
+              required>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+
+    <button type="button"
+            (click)="generarCoords()"
+            class="btn btn-outline-warning">
+      Generar coordenadas
+    </button>
+  </div>
+
+</div>
+
+
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-primary"> Guardar</button>
+      </div>
+
+    </form>
+
+  </div>
+  <pre>
+    {{ temp | json}}
+  </pre>
+</div>
