@@ -20,19 +20,21 @@
     <tr>
       <th>#</th>
       <th>Nombre</th>
-      <th>Rubro</th>
       <th>Direcion</th>
+      <th>Latitud</th>
+      <th>Longitud</th>
       <th>Operar</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+    <tr *ngFor="let marcador of ms.marcadores">
+      <th scope="row">{{ marcador.id }}</th>
+      <td>{{ marcador.nombre }}</td>
+      <td>{{ marcador.direccion }}</td>
+      <td>{{ marcador.lat }}</td>
+      <td>{{ marcador.lng }}</td>
+      <td> <button type="button" class="btn btn-outline-primary">Editar</button> </td>
     </tr>
-   
+
   </tbody>
 </table>

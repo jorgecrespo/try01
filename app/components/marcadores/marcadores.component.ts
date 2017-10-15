@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MapasService }  from "../../services/mapas.service";
+import { Marcador } from "../../interfaces/marcador.interface";
 
 @Component({
   selector: 'app-marcadores',
   templateUrl: './marcadores.component.html',
   styleUrls: ['./marcadores.component.css']
 })
-export class MarcadoresComponent implements OnInit {
+export class MarcadoresComponent  {
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+  constructor( private ms:MapasService) {
+
+
+   }
+
+
 
 }
