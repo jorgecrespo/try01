@@ -10,6 +10,9 @@ export class RubrosComponent {
 
   rubros:any[]=[];
 
+  //solo agrego esta variable para la build de distro
+  txtRubro:any;
+
 
 
   constructor( private rs:RubrosService) {
@@ -28,7 +31,7 @@ agregarRubro(termino:string){
   this.rs.altaRubro(aux)
         .subscribe(data=>{
           console.log(data)
-          this.listarRubros();          
+          this.listarRubros();
         },
       error=> console.error(error))
 }
