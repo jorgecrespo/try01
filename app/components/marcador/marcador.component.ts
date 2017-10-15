@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import  { Marcador }  from "../../interfaces/marcador.interface";
 import { MapasService } from "../../services/mapas.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-marcador',
@@ -10,11 +11,20 @@ import { MapasService } from "../../services/mapas.service";
 })
 export class MarcadorComponent {
 
-  nuevoMarcador: Marcador;
+  nuevoMarcador: boolean = false;
+  id:string;
 
   temp:any = {};
 
-  constructor( private ms:MapasService) {
+  constructor( private ms:MapasService,
+               private router:Router,
+               private ar: ActivatedRoute) {
+      this.ar.params.subscribe( parametros => {
+        console.log(parametros);
+        this.id = parametros['id'];
+
+
+      })
 
    }
 
@@ -25,8 +35,25 @@ generarCoords(){
 }
 
 guardarMarcador(){
-  console.log(this.temp);
-  this.ms.insertarMarcador(this.temp);
+
+
+  if( this.id == "nuevo"){
+    //this.ms.insertarMarcador(this.temp);
+    this.ms.nuevoMarcador(this.temp)
+          .subscribe(data=>{
+            this.router.navigate(['/marcador',data.name])
+          },
+        error=> console.error(error))
+  }else {
+    this.ms.actualizarMarcador (this.temp, this.id)
+  //  this.ms.nuevoMarcador(this.temp)
+          .subscribe(data=>{
+            console.log("actualizando->",data)
+          },
+        error=> console.error(error))
+  }
+
+
 }
 
 }

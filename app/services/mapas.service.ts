@@ -1,25 +1,58 @@
 import { Injectable } from '@angular/core';
 import { Marcador } from "../interfaces/marcador.interface";
+import { Http, Headers } from "@angular/http";
+import 'rxjs/Rx';
 
 @Injectable()
 export class MapasService {
 
   marcadores: Marcador[] = [];
 
-  constructor() {
+  marcadoresUrl:string = "https://pjr01-ace8a.firebaseio.com/marcadores.json";
+  marcadorUrl:string = "https://pjr01-ace8a.firebaseio.com/marcadores/";
 
-    let nuevoMarcador: Marcador = {
-      lat : -34.9221635,
-      lng : -57.959484,
-      nombre: "Esta es mi casa",
-      id:"0",
-    
+  constructor(private http:Http) {
+
+
     }
 
-    this.marcadores.push(nuevoMarcador);
-    }
+//Guardar marcador en Firebase
+nuevoMarcador(marcador:Marcador){
+  console.log("Nuevo marcador en Firebase");
+  let body = JSON.stringify( marcador );
+  let headers = new Headers({
+    'Content-Type':'application/json'
+  });
 
+  return this.http.post( this.marcadoresUrl, body, { headers: headers} )
+        .map( res=>{
+            console.log(res.json());
+            return res.json();
+        } )
+}
+
+//actualizar marcador de Firebase
+actualizarMarcador(marcador:Marcador,key$:string){
+  console.log("Actualizo marcador en Firebase");
+  let body = JSON.stringify( marcador );
+  let headers = new Headers({
+    'Content-Type':'application/json'
+  });
+
+  let url = `${this.marcadorUrl}${key$}.json`
+  return this.http.put( url, body, { headers: headers} )
+        .map( res=>{
+            console.log(res.json());
+            return res.json();
+        } )
+}
+
+
+
+//Guardar marcador en localStorage
     insertarMarcador (marcador:Marcador){
+
+        console.log("Nuevo marcador en LocalStorage");
       this.marcadores.push(marcador);
       this.guardarMarcadores();
     }

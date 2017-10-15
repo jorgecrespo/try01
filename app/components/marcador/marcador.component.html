@@ -76,7 +76,11 @@
 
 
       <div class="form-group">
-        <button type="submit" class="btn btn-outline-primary"> Guardar</button>
+        <button
+              type="submit" 
+              class="btn btn-outline-primary"
+              [disabled]="!forma.valid"
+              > Guardar</button>
       </div>
 
     </form>
