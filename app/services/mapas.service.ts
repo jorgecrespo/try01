@@ -88,6 +88,8 @@ actualizarMarcador(marcador:Marcador,key$:string){
       localStorage.setItem('marcadores', JSON.stringify( this.marcadores ))
     }
 
+
+//cargar marcadores desde local storage
     cargarMarcadores(){
       if( localStorage.getItem('marcadores')){
         this.marcadores = JSON.parse(localStorage.getItem('marcadores'));

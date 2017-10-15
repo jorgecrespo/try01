@@ -1,14 +1,16 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-8">
     <label for="Rubro">Rubro</label>
-    <input type="text">
+    <input type="text" name="txtRubro" [(ngModel)]="txtRubro">
+    <a class="btn btn-outline-info"
+        (click)="agregarRubro(txtRubro)">Agregar</a>
 
+        <div>
+          <ul>
+            <li *ngFor="let k of rubros | keys">{{ rubros[k].rubro}}</li>
+          </ul>
+        </div>
+    <div class="alert alert-danger" *ngIf="!rubros">
+      <strong>NO HAY REGISTROS!!!</strong>
+    </div>
   </div>
-  <div class="col-md-4">
-    <label for="Rubro">Subrubro</label>
-    <input type="text">
-  </div>
-  <div class="col-md-4">
-    Columna 3
-  </div>
-</div>

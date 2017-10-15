@@ -14,11 +14,14 @@ import { AgmCoreModule } from '@agm/core';
 //servicios
 import { MapasService } from "./services/mapas.service";
 import { MarcadorComponent } from './components/marcador/marcador.component';
+import { RubrosService }  from "./services/rubros.service";
 
 //Rutas
 import { APP_ROUTING } from "./app.routes";
 import { KeysPipe } from './pipes/keys.pipe';
 import { RubrosComponent } from './components/rubros/rubros.component';
+import { PendienteComponent } from './components/pendiente/pendiente.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { RubrosComponent } from './components/rubros/rubros.component';
     MarcadoresComponent,
     MarcadorComponent,
     KeysPipe,
-    RubrosComponent
+    RubrosComponent,
+    PendienteComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { RubrosComponent } from './components/rubros/rubros.component';
     HttpModule
   ],
   providers: [
-    MapasService
+    MapasService,
+    RubrosService
   ],
   bootstrap: [AppComponent]
 })
