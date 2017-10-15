@@ -9,9 +9,15 @@ import { Marcador } from "../../interfaces/marcador.interface";
 })
 export class MarcadoresComponent  {
 
+  marcadores: any[]=[];
 
   constructor( private ms:MapasService) {
 
+    this.ms.getMarcadores()
+              .subscribe( data =>{
+                console.log(data);
+                this.marcadores = data;
+              })
 
    }
 

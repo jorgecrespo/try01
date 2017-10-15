@@ -33,7 +33,7 @@ nuevoMarcador(marcador:Marcador){
 
 //actualizar marcador de Firebase
 actualizarMarcador(marcador:Marcador,key$:string){
-  console.log("Actualizo marcador en Firebase");
+  //console.log("Actualizo marcador en Firebase");
   let body = JSON.stringify( marcador );
   let headers = new Headers({
     'Content-Type':'application/json'
@@ -42,7 +42,7 @@ actualizarMarcador(marcador:Marcador,key$:string){
   let url = `${this.marcadorUrl}${key$}.json`
   return this.http.put( url, body, { headers: headers} )
         .map( res=>{
-            console.log(res.json());
+      //      console.log(res.json());
             return res.json();
         } )
 }
@@ -56,6 +56,24 @@ actualizarMarcador(marcador:Marcador,key$:string){
       this.marcadores.push(marcador);
       this.guardarMarcadores();
     }
+
+    //Obtener un marcador de Firebase
+    getMarcador( key$:string){
+
+      let url= `${this.marcadorUrl}${key$}.json`;
+      return this.http.get( url )
+              .map( res=> res.json())
+            }
+
+
+            //Obtener listado de marcadores de Firebase
+    getMarcadores(){
+
+      return this.http.get( this.marcadoresUrl )
+              .map( res=> res.json())
+            }
+
+
 
     borrarMarcador(idx:number){
       this.marcadores.splice(idx,1);

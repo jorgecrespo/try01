@@ -9,16 +9,15 @@
 
 
   <agm-marker
-    *ngFor="let marcador of ms.marcadores; let i = index"
-    [latitude]="marcador.lat"
-    [longitude]="marcador.lng"
-    [title]="marcador.titulo"
-    [markerDraggable]="marcador.draggable"
-    (markerClick)="clickMarcador( marcador, i )">
+    *ngFor="let k of marcadores | keys; let i = index"
+    [latitude]="marcadores[k].lat"
+    [longitude]="marcadores[k].lng"
+    [title]="marcadores[k].nombre"
+      (markerClick)="clickMarcador( marcador, i )">
       	<agm-info-window>
-          <strong>{{ marcador.nombre }}</strong>
-          <p *ngIf="marcador.direccion">
-            {{marcador.direccion}}
+          <strong>{{ marcadores[k].nombre }}</strong>
+          <p *ngIf="marcadores[k].direccion">
+            {{marcadores[k].direccion}}
           </p>
           <p>
             <a

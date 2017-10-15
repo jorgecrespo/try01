@@ -20,12 +20,23 @@ export class MarcadorComponent {
                private router:Router,
                private ar: ActivatedRoute) {
       this.ar.params.subscribe( parametros => {
-        console.log(parametros);
+    //    console.log(parametros);
         this.id = parametros['id'];
+        if( this.id !== "nuevo" ){
+
+          this.ms.getMarcador( this.id)
+                  .subscribe( marcador => this.temp = marcador)
+        }
 
 
       })
 
+   }
+
+
+   resetForm(forma){
+     this.router.navigate(['/marcador','nuevo']);
+     forma.reset();
    }
 
 generarCoords(){

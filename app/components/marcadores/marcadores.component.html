@@ -27,12 +27,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let marcador of ms.marcadores">
-      <th scope="row">{{ marcador.id }}</th>
-      <td>{{ marcador.nombre }}</td>
-      <td>{{ marcador.direccion }}</td>
-      <td>{{ marcador.lat }}</td>
-      <td>{{ marcador.lng }}</td>
+    <tr *ngFor="let k of marcadores | keys">
+      <th scope="row">{{ marcadores[k].id }}</th>
+      <td>{{ marcadores[k].nombre }}</td>
+      <td>{{ marcadores[k].direccion }}</td>
+      <td>{{ marcadores[k].lat }}</td>
+      <td>{{ marcadores[k].lng }}</td>
       <td> <button type="button" class="btn btn-outline-primary">Editar</button> </td>
     </tr>
 

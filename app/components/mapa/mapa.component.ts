@@ -18,13 +18,17 @@ export class MapaComponent {
 
   marcadorSel:any = null;
 
-
+marcadores: any[] = [];
 
 
 
   constructor( private ms:MapasService) {
 
-    this.ms.cargarMarcadores();
+    this.ms.getMarcadores()
+              .subscribe( data =>{
+                console.log(data);
+                this.marcadores = data;
+              })
 
    }
 

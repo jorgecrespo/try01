@@ -1,6 +1,15 @@
 <h3>Marcador</h3>
 
-<button routerLink="/marcadores" type="button" class="btn btn-outline-danger">Volver</button>
+<button routerLink="/marcadores"
+        type="button"
+        class="btn btn-outline-danger">
+        Volver
+</button>
+<button type="button"
+        class="btn btn-outline-warning"
+        (click)="resetForm(forma)">
+        Nuevo
+</button>
 
 <div class="row">
   <div class="col-md-12">
@@ -77,7 +86,7 @@
 
       <div class="form-group">
         <button
-              type="submit" 
+              type="submit"
               class="btn btn-outline-primary"
               [disabled]="!forma.valid"
               > Guardar</button>
